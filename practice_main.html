@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8">
+		<title>BitCup Test</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" href="style.css">
+	</head>
+
+	<body>
+		<!-- start page -->
+		<div id="start-page" class="page">
+			<h1>음식 월드컵</h1>
+			<br>
+			<button id="start-btn">시작하기</button>
+			<br>
+			<button id="push-img">음식 추가하기</button>
+		</div>
+
+		<!-- push img page -->
+		<div id="push-img-page" class="page">
+			<form action="upload" method="post" enctype="multipart/form-data">
+				<label for=foodname>음식 이름:</label>
+				<input type="text" id="foodname" name="foodname" placeholder="음식 이름을 입력하세요" required>
+				<br><br>
+
+				<label for=photo>사진 업로드:</label>
+				<input type="file" name="photo" accept="img/*" required>
+				<br><br>
+
+				<button type="submit" id="push-btn">음식 추가하기</button>
+			</form>	
+		</div>
+
+		<!-- game page -->
+		<div id="game-page" class="page">
+			<h1>음식 월드컵</h1>
+			<h2 id="round-info"></h2>
+
+			<div id="game">
+				<div class="group" width="50%">
+					<img id="left-img" class="img" src="" width="300">
+					<br>
+					<p id="left-word"></p>
+				</div>
+				<div class="group" width="50%">
+					<img id="right-img" class="img" src="" width="300">
+					<br>
+					<p id="right-word"></p>
+				</div>
+			</div>
+		</div>
+
+		<!-- win page -->
+		<div id="result-page" class="page">
+			<h2>최종 우승</h2>
+			<img id="win-img" src="" width="300">
+			<br>
+			<p id="win-word"></p>
+			<button id="restart-btn">다시 시작하기</button>
+			<button id="go-start-btn">시작화면</button>
+		</div>
+		<script src="practice_script.js"></script>
+	</body>
+</html>

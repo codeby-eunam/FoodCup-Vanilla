@@ -1,12 +1,12 @@
 const images = [
-    { src: 'practice_images/img1.jpg', name: '긴자료코' },
+    { src: 'practice_images/img1.jpg', name: '돈까스' },
     { src: 'practice_images/img2.jpg', name: '부대찌개' },
-    { src: 'practice_images/img3.jpg', name: '타이요' },
+    { src: 'practice_images/img3.jpg', name: '덮밥' },
     { src: 'practice_images/img4.jpg', name: '쌀국수' },
-    { src: 'practice_images/img5.jpg', name: '회.식' },
-    { src: 'practice_images/img6.jpg', name: '퀴다' },
+    { src: 'practice_images/img5.jpg', name: '초밥' },
+    { src: 'practice_images/img6.jpg', name: '파스타' },
     { src: 'practice_images/img7.jpg', name: '꼬치' },
-    { src: 'practice_images/img8.jpg', name: '버섯집' }
+    { src: 'practice_images/img8.jpg', name: '버섯' }
 ];
 
 function shuffle(array) {
@@ -19,14 +19,14 @@ function shuffle(array) {
 let currentRound, nextRound, index;
 
 const startPage = document.getElementById("start-page");
-const pushImgPage = document.getElementById("push-img-page");
+// const pushImgPage = document.getElementById("push-img-page");
 const gamePage = document.getElementById("game-page");
 const resultPage = document.getElementById("result-page");
 
 const startBtn = document.getElementById("start-btn");
 const restartBtn = document.getElementById("restart-btn");
 const gostartBtn = document.getElementById("go-start-btn");
-const pushImgBtn = document.getElementById("push-img");
+// const pushImgBtn = document.getElementById("push-img");
 
 const leftImg = document.getElementById("left-img");
 const rightImg = document.getElementById("right-img");
@@ -38,7 +38,7 @@ const winName = document.getElementById("win-word");
 
 function start() {
 	shuffle(images);
-	pushImgPage.style.display = "none";
+	// pushImgPage.style.display = "none";
 	gamePage.style.display = "none";
 	resultPage.style.display = "none";
 }
@@ -81,7 +81,7 @@ function showPair() {
 
 function showResult(winner) {
 	gamePage.style.display = "none";
-	resultPage.style.display = "block";
+	resultPage.style.display = "flex";
 	winImg.src = winner.src;
 	winName.textContent = winner.name;
 }
@@ -100,24 +100,24 @@ rightImg.addEventListener("click", () => {
 
 startBtn.addEventListener("click", () => {
 	startPage.style.display = "none";
-	gamePage.style.display = "block";
+	gamePage.style.display = "flex";
 	initGame();
 });
 
-pushImgBtn.addEventListener("click", () => {
-	startPage.style.display = "none";
-	pushImgPage.style.display = "block";
-});
+// pushImgBtn.addEventListener("click", () => {
+// 	startPage.style.display = "none";
+// 	pushImgPage.style.display = "flex";
+// });
 
 restartBtn.addEventListener("click", ()=> {
 	startPage.style.display = "none";
-	gamePage.style.display = "block";
+	gamePage.style.display = "flex";
 	resultPage.style.display = "none";
 	initGame();
 });
 
 gostartBtn.addEventListener("click", ()=> {
-	startPage.style.display = "block";
+	startPage.style.display = "flex";
 	gamePage.style.display = "none";
 	resultPage.style.display = "none";
 });

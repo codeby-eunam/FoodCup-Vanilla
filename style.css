@@ -20,11 +20,17 @@ h1, h2 {
     width: 100%;
     min-height: 100vh;
     background: white;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: -10vh;
 }
 
 /* 시작 페이지만 기본으로 보이기 */
 #start-page {
-    display: block;
+    display: flex;
 }
 
 /* ================== Form ================== */
@@ -74,44 +80,57 @@ img {
     margin: 20px auto;
 }
 
-/* ================== Game Layout ================== */
+/* ================== Game Layout (Grid) ================== */
 #game {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    width: 100%;
-    gap: 40px;
-    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* ✅ 기본 2열 */
+    gap: 20px;
+    width: calc(100% - 25px);
+    margin: 10px;
+    justify-items: center;
 }
 
-/* 이미지 + 텍스트 묶음 */
+/* 카드 */
 .group {
+    width: 100%;
+    max-width: 300px; /* PC에서 너무 커지지 않도록 */
     display: flex;
     flex-direction: column;
     align-items: center;
     cursor: pointer;
     transition: transform 0.2s;
+	padding: 5px;
 }
 
 .group:hover {
     transform: scale(1.05);
 }
 
-/* 게임 내부 이미지 */
+/* 이미지: 1:1 비율 유지 */
 .group img {
-    width: 300px;
-    height: 300px;
+    width: 100%;
+    aspect-ratio: 1 / 1;   /* ✅ 정사각형 유지 */
     object-fit: cover;
     border-radius: 16px;
     box-shadow: 0 6px 18px rgba(0,0,0,0.1);
 }
 
+/* 텍스트 */
 .group p {
-    margin-top: 10px;
-    font-size: 1.1rem;
+    margin-top: 8px;
+    font-size: 1rem;
     font-weight: 600;
-    color: #333;
 }
+
+
+/* ================== Responsive ================== */
+/* ✅ 360px 이하에서만 1열 */
+@media (max-width: 359px) {
+    #game {
+        grid-template-columns: 1fr;
+    }
+}
+
 
 /* ================== Loading Overlay ================== */
 #loading {

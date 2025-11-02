@@ -46,8 +46,6 @@ function start() {
 function initGame() {
 	startPage.style.display = "none";
 	resultPage.style.display = "none";
-	shuffle(images);
-	currentRound = [...images];
 	nextRound = [];
 	index = 0;
 	leftImg.style.display = "inline";
@@ -77,7 +75,7 @@ function showPair() {
 		index = 0;
 	}
 	const matchNumber = getRoundLabel(currentRound.length);
-	if (matchNumber === 2)
+	if (matchNumber === "결승전")
 		roundInfo.textContent = `결승전`;
 	else
 		roundInfo.textContent = `이번 라운드 : ${matchNumber}`;
@@ -108,6 +106,7 @@ rightImg.addEventListener("click", () => {
 });
 
 startBtn.addEventListener("click", () => {
+	shuffle(images);
 	const round = document.getElementById('round-select').value;
 
 	switch(round) {
@@ -131,6 +130,9 @@ startBtn.addEventListener("click", () => {
 	}
 
 	currentRound = [...images].slice(0, maxLength);
+
+	console.log("선택한 라운드:", round, "maxLength:", maxLength);
+	console.log("currentRound length:", currentRound.length);
 
 	startPage.style.display = "none";
 	gamePage.style.display = "flex";

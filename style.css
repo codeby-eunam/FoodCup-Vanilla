@@ -70,14 +70,50 @@ button:hover {
 /* ================== Images ================== */
 img {
     max-width: 100%;
-    height: auto;
+    aspect-ratio: 1 / 1;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 /* 결과 페이지 이미지 정렬 */
-#result-page img {
+/* #result-page img {
     margin: 20px auto;
+} */
+
+/* ================== Select & Label ================== */
+label[for="round-select"] {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+    display: block;  /* 위쪽에 배치 */
+}
+
+.round-select {
+    width: 100%;
+    max-width: 240px;
+    padding: 8px 12px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+	font-family: Arial, sans-serif;
+    text-align: center;
+    appearance: none;
+    background-color: #b7e4c7;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    transition: all 0.2s ease;
+}
+
+.round-select:hover {
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+/* 반응형 */
+@media (max-width: 500px) {
+    .round-select {
+        width: 100%;
+    }
 }
 
 /* ================== Game Layout (Grid) ================== */

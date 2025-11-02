@@ -16,7 +16,7 @@ function shuffle(array) {
 	}
 }
 
-let currentRound, nextRound, index;
+let currentRound, nextRound, index, maxLength;
 
 const startPage = document.getElementById("start-page");
 // const pushImgPage = document.getElementById("push-img-page");
@@ -57,6 +57,15 @@ function initGame() {
 	showPair();
 }
 
+function getRoundLabel(n) {
+	if (n <= 2) return '결승전';
+	if (n <= 4) return '4강';
+	if (n <= 8) return '8강';
+	if (n <= 16) return '16강';
+	if (n <= 32) return '32강';
+	return '64강';
+}
+
 function showPair() {
 	if (index >= currentRound.length) {
 		if (nextRound.length === 1) {
@@ -67,11 +76,11 @@ function showPair() {
 		nextRound = [];
 		index = 0;
 	}
-	const matchNumber = currentRound.length;
+	const matchNumber = getRoundLabel(currentRound.length);
 	if (matchNumber === 2)
 		roundInfo.textContent = `결승전`;
 	else
-		roundInfo.textContent = `이번 라운드 : ${matchNumber} 강`;
+		roundInfo.textContent = `이번 라운드 : ${matchNumber}`;
 
 	leftImg.src = currentRound[index].src;
 	leftWord.textContent = currentRound[index].name;
@@ -99,6 +108,30 @@ rightImg.addEventListener("click", () => {
 });
 
 startBtn.addEventListener("click", () => {
+	const round = document.getElementById('round-select').value;
+
+	switch(round) {
+		case 'all':
+			maxLength = images.length;
+			break;
+		case '64':
+			maxLength = Math.min(64, images.length);
+			break;
+		case '32':
+			maxLength = Math.min(32, images.length);
+			break;
+		case '16':
+			maxLength = Math.min(16, images.length);
+			break;
+		case '8':
+			maxLength = Math.min(8, images.length);
+			break;
+		default:
+			maxLength = images.length;
+	}
+
+	currentRound = [...images].slice(0, maxLength);
+
 	startPage.style.display = "none";
 	gamePage.style.display = "flex";
 	initGame();
